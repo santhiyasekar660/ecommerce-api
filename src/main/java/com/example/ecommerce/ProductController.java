@@ -8,6 +8,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 @RestController
 @RequestMapping("/api/items")
+@CrossOrigin(origins = "*") 
 public class ProductController {
 
     // In-memory storage (ArrayList)
@@ -22,7 +23,7 @@ public class ProductController {
         return ResponseEntity.status(201).body(product);
     }
 
-// 2. Get a single item by ID (GET)
+    // 2. Get a single item by ID (GET)
     @GetMapping("/{id}")
     public ResponseEntity<Product> getItemById(@PathVariable Long id) {
         return items.stream()
@@ -32,8 +33,9 @@ public class ProductController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    // 3. Get all items (Frontend-il list panna ithu help aagum)
     @GetMapping
     public List<Product> getAllItems() {
         return items;
     }
-} 
+}
