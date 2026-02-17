@@ -33,7 +33,7 @@ public class ProductController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // 3. Get all items (Frontend-il list panna ithu help aagum)
+    // 3. Get all items
     @GetMapping
     public List<Product> getAllItems() {
         return items;
